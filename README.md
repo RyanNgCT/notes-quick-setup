@@ -1,3 +1,4 @@
 # notes-quick-setup
 
-- template designed to streamline creation of obsidian notes folders for notetaking
+Powershell Script designed to streamline and automate creation of obsidian notes folders for notetaking in university.
+
