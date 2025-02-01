@@ -1,4 +1,8 @@
 # notes-quick-setup
 
-Powershell Script designed to streamline and automate creation of obsidian notes folders for notetaking in university.
+Powershell Script designed to streamline and automate the creation of obsidian notes folders / vaults for notetaking in university.
 
+To fix the error message: `create-default.ps1 cannot be loaded because running scripts is disabled on this system`, run:
+```powershell
+powershell -ep bypass
+```

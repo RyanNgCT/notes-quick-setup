@@ -30,6 +30,7 @@ if (-not (Test-Path -Path $folderPath)) {
     Set-Content -Path "$notes\.gitignore" -Value $content
     Set-Content -Path "$notes\README.md" -Value "# Week 1 Lecture"
     New-Item -ItemType Directory -Path "$notes\assets" | Out-Null
+    cmd.exe /c "git init . & git add ."
 
 
     Write-Output "Done creating $folderName on Desktop."
