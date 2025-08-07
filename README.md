@@ -6,3 +6,8 @@ To fix the error message: `create-default.ps1 cannot be loaded because running s
 ```powershell
 powershell -ep bypass
 ```
+
+Running the script: 
+```powershell
+.\create-default.ps1
+```
