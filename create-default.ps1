@@ -41,16 +41,16 @@ if (-not (Test-Path -Path $folderPath)) {
 
     # Create README with populated title
     if ($moduleTitle -eq ""){
-        Set-Content -Path "$notes\README.md" -Value "$folderName"
+        Set-Content -Path "$notes\README.md" -Value "# $folderName"
     }
     else{
-        Set-Content -Path "$notes\README.md" -Value "$folderName - $moduleTitle"
+        Set-Content -Path "$notes\README.md" -Value "# $folderName - $moduleTitle"
     }
 
     # Create subdirectories and default file
     New-Item -ItemType Directory -Path "$notes\Week 1" | Out-Null
     New-Item -ItemType Directory -Path "$notes\assets" | Out-Null
-    Set-Content -Path "$notes\Week 1\Lecture 1.md" -Value "# Week 1 Lecture"
+    New-Item -Path "$notes\Week 1\Lecture 1 - Introduction.md" -ItemType File -Force | Out-Null
 
     # Initialize git repo
     cmd.exe /c "git init . & git add ."
