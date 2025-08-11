@@ -1,7 +1,7 @@
-if(![bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")) {
-    Write-Warning "Please run as Administrator!"
-    exit
-}
+# if(![bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")) {
+#     Write-Warning "Please run as Administrator!"
+#     exit
+# }
 
 $folderName = (Read-Host "Name of Notes base directory").ToUpper()
 
