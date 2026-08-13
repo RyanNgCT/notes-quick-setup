@@ -1,8 +1,3 @@
-# if(![bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")) {
-#     Write-Warning "Please run as Administrator!"
-#     exit
-# }
-
 $folderName = (Read-Host "Name of Notes base directory").ToUpper()
 
 if ([string]::IsNullOrWhiteSpace($folderName)) {
@@ -10,8 +5,8 @@ if ([string]::IsNullOrWhiteSpace($folderName)) {
     exit
 }
 
-$desktopPath = [Environment]::GetFolderPath('Desktop')
-$folderPath = Join-Path -Path $desktopPath -ChildPath $folderName
+$documentsPath = [Environment]::GetFolderPath('Documents')
+$folderPath = Join-Path -Path $documentsPath -ChildPath $folderName
 
 if (-not (Test-Path -Path $folderPath)) {
     New-Item -ItemType Directory -Path $folderPath | Out-Null
@@ -30,7 +25,7 @@ if (-not (Test-Path -Path $folderPath)) {
     Set-Content -Path "$notes\.gitignore" -Value $content
 
     # Pull course title from NUSMods API
-    $apiUrl = "https://api.nusmods.com/v2/2025-2026/modules/$folderName.json"
+    $apiUrl = "https://api.nusmods.com/v2/2026-2027/modules/$folderName.json"
     try {
         $response = Invoke-RestMethod -Uri $apiUrl -Method Get -ErrorAction Stop
         $moduleTitle = $response.title
@@ -55,7 +50,7 @@ if (-not (Test-Path -Path $folderPath)) {
     # Initialize git repo
     cmd.exe /c "git init . & git add ."
 
-    Write-Output "Done creating $folderName on Desktop."
+    Write-Output "Done creating $folderName on Documents."
 } else {
-    Write-Output "$folderName already exists on Desktop."
+    Write-Output "$folderName already exists on Documents."
 }
