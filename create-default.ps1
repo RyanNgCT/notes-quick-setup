@@ -1,11 +1,12 @@
 $folderName = (Read-Host "Name of Notes base directory").ToUpper()
+$cwd = Get-Location
 
 if ([string]::IsNullOrWhiteSpace($folderName)) {
     Write-Warning "Invalid folder name. Please rerun the script."
     exit
 }
 
-$documentsPath = [Environment]::GetFolderPath('Documents')
+$documentsPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments)
 $folderPath = Join-Path -Path $documentsPath -ChildPath $folderName
 
 if (-not (Test-Path -Path $folderPath)) {
@@ -50,7 +51,9 @@ if (-not (Test-Path -Path $folderPath)) {
     # Initialize git repo
     cmd.exe /c "git init . & git add ."
 
-    Write-Output "Done creating $folderName on Documents."
+    Write-Output "Done creating $folderName in Documents."
 } else {
-    Write-Output "$folderName already exists on Documents."
+    Write-Output "$folderName already exists in Documents."
 }
+
+Set-Location -Path $cwd
